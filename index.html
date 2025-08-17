@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@seunome — Links</title>
+  <meta name="description" content="Todos os meus links em um só lugar. Portfólio, redes sociais, contatos e novidades." />
+  <meta name="theme-color" content="#e9e6df" />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="@seunome — Links" />
+  <meta property="og:description" content="Todos os meus links em um só lugar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/e9e6df/222.png&text=@seunome" />
+  <meta property="og:url" content="https://seudominio.com" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✨%3C/text%3E%3C/svg%3E">
+  <style>
+    /* =========================
+       PALETA E DESIGN GLOBAL
+       ========================= */
+    :root {
+      --bg: #f6f4ef;          /* off‑white quente */
+      --bg-2: #efece5;        /* off‑white 2 */
+      --text: #1f2328;        /* grafite */
+      --muted: #5b5f66;
+      --gold: #c7a256;        /* dourado elegante */
+      --gold-2: #e8cf93;      /* dourado claro */
+      --card: rgba(255,255,255,0.64);
+      --stroke: rgba(199,162,86,0.35);
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius: 20px;
+      --radius-lg: 26px;
+      --spacing: clamp(16px, 2.4vw, 28px);
+      --maxw: 720px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115; 
+        --bg-2: #161922;
+        --text: #e9e6df;
+        --muted: #b9b4a8;
+        --card: rgba(22,25,34,0.64);
+        --stroke: rgba(232,207,147,0.28);
+        --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      }
+      meta[name="theme-color"] { content: #0f1115; }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font: 500 16px/1.5 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% 0%, var(--bg-2), transparent),
+                  radial-gradient(900px 600px at 90% 10%, rgba(231, 213, 175, 0.22), transparent),
+                  linear-gradient(180deg, var(--bg), var(--bg));
+      display: grid;
+      place-items: center;
+      padding: 28px 18px 44px;
+    }
+
+    .shell {
+      width: min(100%, var(--maxw));
+    }
+
+    .card {
+      position: relative;
+      background: var(--card);
+      backdrop-filter: saturate(140%) blur(8px);
+      -webkit-backdrop-filter: saturate(140%) blur(8px);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    /* halo dourado suave */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      pointer-events: none;
+      background:
+        radial-gradient(1200px 300px at 50% -10%, rgba(231, 213, 175, 0.25), transparent 55%),
+        linear-gradient(180deg, rgba(199,162,86,0.18), rgba(199,162,86,0) 30%);
+      mask: linear-gradient(#000, rgba(0,0,0,0.25));
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: var(--spacing);
+      align-items: center;
+      padding: clamp(16px, 2.8vw, 28px);
+    }
+
+    .avatar {
+      width: clamp(84px, 10vw, 110px);
+      aspect-ratio: 1/1;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid rgba(199,162,86,0.45);
+      box-shadow: 0 8px 20px rgba(199,162,86,0.18);
+      transform: translateZ(0);
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .id {
+      display: grid;
+      gap: 4px;
+      align-self: center;
+    }
+    .name {
+      font-size: clamp(22px, 3.2vw, 30px);
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .bio {
+      color: var(--muted);
+      font-weight: 500;
+      max-width: 52ch;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--stroke);
+      padding: 8px 12px; border-radius: 999px;
+      background: rgba(255,255,255,0.45);
+      cursor: pointer; user-select: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .chip:active { transform: scale(0.98); }
+
+    .chip svg { width: 18px; height: 18px; }
+
+    main { padding: 0 clamp(16px, 2.2vw, 24px) clamp(18px, 3.2vw, 30px); }
+
+    .links {
+      display: grid;
+      gap: 14px;
+      margin: 8px 0 6px;
+    }
+
+    .link {
+      display: grid; grid-template-columns: 46px 1fr auto; align-items: center; gap: 14px;
+      padding: 14px 16px; border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+      text-decoration: none; color: inherit; font-weight: 700;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .link:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); border-color: rgba(199,162,86,0.55); }
+
+    .icon { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 12px; border: 1px solid var(--stroke); background: rgba(199,162,86,0.08); }
+    .icon svg { width: 24px; height: 24px; }
+
+    .meta { color: var(--muted); font-weight: 600; font-size: 13px; }
+
+    .badge {
+      padding: 6px 10px; border-radius: 999px; border: 1px solid var(--stroke);
+      background: rgba(231, 213, 175, 0.18);
+      font-size: 12px; font-weight: 700; letter-spacing: .2px;
+    }
+
+    .grid {
+      display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+
+    footer { padding: 10px 18px 22px; color: var(--muted); text-align: center; font-size: 13px; }
+    footer a { color: inherit; }
+
+    /* botão flutuante para contato rápido */
+    .float-whatsapp {
+      position: fixed; right: 18px; bottom: 18px; z-index: 9;
+      display: inline-grid; place-items: center; gap: 8px;
+      text-decoration: none; color: var(--text);
+    }
+    .float-whatsapp .btn {
+      padding: 12px 16px; border-radius: 12px; border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.6));
+      box-shadow: var(--shadow);
+      display: inline-flex; align-items: center; gap: 10px; font-weight: 800;
+    }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* animações sutis */
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .link { animation: floatIn .4s ease both; }
+    .link:nth-child(2) { animation-delay: .05s; }
+    .link:nth-child(3) { animation-delay: .1s; }
+    .link:nth-child(4) { animation-delay: .15s; }
+    .link:nth-child(5) { animation-delay: .2s; }
+  </style>
+</head>
+<body>
+  <a class="float-whatsapp" href="https://wa.me/5599999999999?text=Ol%C3%A1!%20Vim%20pelo%20seu%20Link-in-Bio" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <span class="btn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.52 3.48A11.5 11.5 0 0 0 2.9 18.1L2 22l4-.9a11.5 11.5 0 0 0 15.62-17.6Z"/><path d="M8 12a6 6 0 0 0 6 6"/></svg>
+      WhatsApp
+    </span>
+    <span class="sr-only">Abrir conversa no WhatsApp</span>
+  </a>
+
+  <div class="shell">
+    <section class="card" role="region" aria-label="Perfil e links">
+      <header>
+        <div class="avatar" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=400&auto=format&fit=crop" alt="Foto de perfil" />
+        </div>
+        <div class="id">
+          <div class="name">Vitor Procópio</div>
+          <div class="bio">Criador de conteúdo | Tech & Música. Novos vídeos toda semana. Parcerias: contato@exemplo.com</div>
+          <div class="meta">Baseado no Brasil · Disponível para projetos</div>
+        </div>
+        <div class="actions">
+          <button class="chip" id="copyHandle" aria-label="Copiar usuário">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            @vitor
+          </button>
+          <button class="chip" id="share" aria-label="Compartilhar página">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Compartilhar
+          </button>
+          <button class="chip" id="theme" aria-label="Alternar tema">
+            <svg id="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg id="moon" style="display:none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <div class="links">
+          <!-- Pronto para redes / plataformas -->
+          <a class="link" href="https://www.instagram.com/seuusuario" target="_blank" rel="noopener" aria-label="Abrir Instagram">
+            <span class="icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+            </span>
+            <div>
+              Instagram
+              <div class="meta">Conteúdos diários, bastidores e stories</div>
+            </div>
+            <span class="badge">@seuusuario</span>
+          </a>
+
+          <a class="link" href="https://tiktok.com/@seuusuario" target="_blank" rel="noopener" aria-label="Abrir TikTok">
+            <span class="icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7.5a6.5 6.5 0 0 1-6.5-6.5v12a3.5 3.5 0 1 1-3.5-3.5"/></svg>
+            </span>
+            <div>
+              TikTok
+              <div class="meta">Clipes curtos e trends</div>
+            </div>
+            <span class="badge">@seuusuario</span>
+          </a>
+
+          <a class="link" href="https://youtube.com/@seucanal" target="_blank" rel="noopener" aria-label="Abrir YouTube">
+            <span class="icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 3.88 12 3.88 12 3.88s-6.88 0-8.6.54a2.78 2.78 0 0 0-1.94 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2c1.72.54 8.6.54 8.6.54s6.88 0 8.6-.54a2.78 2.78 0 0 0 1.94-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58Z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </span>
+            <div>
+              YouTube
+              <div class="meta">Vídeos completos e lives</div>
+            </div>
+            <span class="badge">@seucanal</span>
+          </a>
+
+          <div class="grid">
+            <a class="link" href="mailto:contato@exemplo.com" aria-label="Enviar e-mail">
+              <span class="icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="m22 6-10 7L2 6"/></svg>
+              </span>
+              <div>
+                E-mail
+                <div class="meta">contato@exemplo.com</div>
+              </div>
+              <span class="badge">Fale comigo</span>
+            </a>
+
+            <a class="link" href="https://github.com/seuusuario" target="_blank" rel="noopener" aria-label="Abrir GitHub">
+              <span class="icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.3-.27-2.58-1-3.65.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 1 5 1 5 1c-.3 1.15-.3 2.35 0 3.5A6.52 6.52 0 0 0 4 9.5c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85"/></svg>
+              </span>
+              <div>
+                GitHub
+                <div class="meta">Projetos e códigos recentes</div>
+              </div>
+              <span class="badge">@seuusuario</span>
+            </a>
+          </div>
+
+          <a class="link" href="https://open.spotify.com/artist/xxxxxxxx" target="_blank" rel="noopener" aria-label="Abrir Spotify">
+            <span class="icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 11.5A10 10 0 0 1 16 13"/><path d="M8 15.5A10 10 0 0 1 14 17"/></svg>
+            </span>
+            <div>
+              Spotify
+              <div class="meta">Lançamentos e playlists</div>
+            </div>
+            <span class="badge">Ouça agora</span>
+          </a>
+        </div>
+      </main>
+
+      <footer>
+        © <span id="year"></span> @seunome · Design elegante off‑white & dourado · <a href="#" id="editColor">trocar cor</a>
+      </footer>
+    </section>
+  </div>
+
+  <script>
+    // Utilidades: copiar @, compartilhar, alternar tema e personalização rápida de cor
+    const handle = '@vitor';
+
+    document.getElementById('copyHandle').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(handle);
+        toast('Usuário copiado: ' + handle);
+      } catch (e) {
+        toast('Não foi possível copiar.');
+      }
+    });
+
+    document.getElementById('share').addEventListener('click', async () => {
+      const data = { title: document.title, text: 'Meus links:', url: location.href };
+      if (navigator.share) {
+        await navigator.share(data).catch(()=>{});
+      } else {
+        await navigator.clipboard.writeText(location.href);
+        toast('Link copiado!');
+      }
+    });
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const themeBtn = document.getElementById('theme');
+    themeBtn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle('dark');
+      // Alterna ícones
+      document.getElementById('sun').style.display = isDark ? 'none' : '';
+      document.getElementById('moon').style.display = isDark ? '' : 'none';
+      // Troca paleta quando .dark ativo
+      if (isDark) {
+        root.style.setProperty('--bg', '#0f1115');
+        root.style.setProperty('--bg-2', '#161922');
+        root.style.setProperty('--text', '#e9e6df');
+        root.style.setProperty('--muted', '#b9b4a8');
+        root.style.setProperty('--card', 'rgba(22,25,34,0.64)');
+        root.style.setProperty('--stroke', 'rgba(232,207,147,0.28)');
+      } else {
+        root.style.removeProperty('--bg');
+        root.style.removeProperty('--bg-2');
+        root.style.removeProperty('--text');
+        root.style.removeProperty('--muted');
+        root.style.removeProperty('--card');
+        root.style.removeProperty('--stroke');
+      }
+    });
+
+    // Botão "trocar cor": alterna variações do dourado
+    document.getElementById('editColor').addEventListener('click', (e) => {
+      e.preventDefault();
+      const sets = [
+        ['#c7a256','#e8cf93'], // original
+        ['#d4af37','#f2df98'], // gold clássico
+        ['#b08d57','#e0c28d'], // bronzeado
+        ['#a58b5f','#d8c79a'], // areia
+      ];
+      const curr = getComputedStyle(document.documentElement).getPropertyValue('--gold').trim();
+      const idx = sets.findIndex(s => s[0] === curr);
+      const next = sets[(idx + 1) % sets.length];
+      document.documentElement.style.setProperty('--gold', next[0]);
+      document.documentElement.style.setProperty('--gold-2', next[1]);
+      toast('Paleta atualizada ✨');
+    });
+
+    // Ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toast minimalista
+    let t;
+    function toast(msg){
+      clearTimeout(t);
+      let el = document.getElementById('toast');
+      if(!el){
+        el = document.createElement('div');
+        el.id = 'toast';
+        el.style.position = 'fixed';
+        el.style.left = '50%';
+        el.style.bottom = '22px';
+        el.style.transform = 'translateX(-50%)';
+        el.style.padding = '10px 14px';
+        el.style.borderRadius = '10px';
+        el.style.border = '1px solid var(--stroke)';
+        el.style.background = 'rgba(255,255,255,0.85)';
+        el.style.boxShadow = 'var(--shadow)';
+        el.style.fontWeight = '800';
+        el.style.zIndex = '999';
+        document.body.appendChild(el);
+      }
+      el.textContent = msg;
+      el.style.opacity = '1';
+      t = setTimeout(()=>{ el.style.opacity = '0'; }, 1600);
+    }
+
+    // Acessibilidade: navegação por teclado foca links
+    const linkEls = document.querySelectorAll('.link, .chip, .float-whatsapp .btn');
+    linkEls.forEach((el, i) => {
+      el.addEventListener('keyup', (ev) => {
+        if(ev.key === 'Enter' || ev.key === ' '){ el.click(); }
+      });
+      el.setAttribute('tabindex', '0');
+    });
+  </script>
+
+  <!--
+    COMO PERSONALIZAR RÁPIDO:
+    1) Troque avatar: substitua a URL da <img> no header.
+    2) Atualize nome, @, bio e links (href e badges).
+    3) Cor: clique em "trocar cor" no rodapé para variações do dourado, ou edite --gold em :root.
+    4) WhatsApp flutuante: edite o número no link wa.me.
+    5) Deploy: envie este arquivo para Netlify, Vercel, GitHub Pages ou hospede no seu domínio.
+  -->
+</body>
+</html>
